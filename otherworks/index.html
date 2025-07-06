@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Other Works - Cleo Oberin</title>
+
+<link rel="icon" href="https://www.realsimple.com/thmb/LLUQao-bX-muRqmh6o6qIiVZfTg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/clover-lawn-GettyImages-1145731440-836fe23b8e18433e93c87b7b300c0f1f.jpg" type="image/png" />
+
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: white;
+    font-family: SourceCodePro, monospace;
+    color: black;
+    font-weight: normal;
+  }
+  .container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    text-align: center;
+  }
+  .title {
+    font-size: 6vw;
+    font-weight: normal;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+  }
+  .subtitle {
+    font-size: small;
+    margin-bottom: 2rem;
+    font-weight: normal;
+  }
+  .center-gif {
+    width: 120px;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+  .works-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+  }
+  .works-list {
+    max-width: 350px; /* widened from 300px */
+    font-size: 0.75rem;
+    line-height: 1.6;
+    text-align: left;
+    border-top: 1px solid black;
+    padding-top: 1rem;
+    font-weight: normal;
+  }
+  .works-list li {
+    margin-bottom: 0.7rem;
+  }
+  .works-list a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-weight: normal;
+  }
+  .works-list a:hover {
+    text-decoration: underline;
+  }
+  .preview-img {
+    max-width: 400px;
+    border: 1px solid black;
+    display: none;
+  }
+  .nav {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: small;
+    display: flex;
+    gap: 1rem;
+    font-weight: normal;
+  }
+  .nav a {
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    padding: 5px 12px;
+    font-family: SourceCodePro, monospace;
+    font-weight: normal;
+  }
+  .nav a:hover {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+  }
+  @media (max-width: 800px) {
+    .works-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .preview-img {
+      margin-top: 20px;
+      max-width: 80%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="subtitle">[NON-UNIVERSITY PROJECTS + CREATIVE ENDEAVORS]</div>
+
+  <img class="center-gif" src="https://teganmoore.hotglue.me/?start.head.156787862144" alt="Decorative star gif" />
+
+  <div class="works-container">
+    <ul class="works-list">
+      <li><a href="#" onclick="toggleImage('images/quadstock.jpg')">Festival Branding for [Queen's College]</a></li>
+      <li><a href="#" onclick="toggleImage('images/KM.png')">Annual Report Design for [Kildare Ministries]</a></li>
+      <li><a href="#" onclick="toggleImage('images/rooftop.png')">Event Branding for [American Rooftop]</a></li>
+      <li><a href="#" onclick="toggleImage('images/jam.png')">Product Development for [ESSEN Food & Wine]</a></li>
+    </ul>
+
+    <img id="preview" class="preview-img" src="" alt="Preview Image">
+  </div>
+
+  <nav class="nav">
+    <a href="/index.html">[HOME]</a>
+    <a href="/datapage/index.html">[WORKS]</a>
+  </nav>
+</div>
+
+<script>
+  let currentImage = "";
+
+  function toggleImage(src) {
+    const img = document.getElementById('preview');
+    if (img.style.display === 'block' && img.src.includes(src)) {
+      img.style.display = 'none';
+      currentImage = "";
+    } else {
+      img.src = src;
+      img.style.display = 'block';
+      currentImage = src;
+    }
+  }
+</script>
+
+</body>
+</html>
+
+
+
+

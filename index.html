@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.min.js"></script>
+         <script language="javascript" type="text/javascript" src="IntMedia_Week8_InsideTheOrb.js"></script>
+
+        <link rel="icon" href="https://www.realsimple.com/thmb/LLUQao-bX-muRqmh6o6qIiVZfTg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/clover-lawn-GettyImages-1145731440-836fe23b8e18433e93c87b7b300c0f1f.jpg" type="image/png" />
+         
+    <title>week eight</title>
+    <style>
+     html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    #sketch-holder canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1; 
+      pointer-events: none;
+    }
+    .flex {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .divone {
+      position: absolute;
+      top: 10vh;
+      left: 3vw;
+      font-family: SourceCodePro;
+      color: rgb(255, 255, 255);
+      font-size: 6vw;
+      margin-right: 10vh;
+    }
+    .divtwo {
+  position: absolute;
+  bottom: 3vw;
+  right: 3vw;
+  font-family: SourceCodePro;
+  color: rgb(0, 0, 0);
+  font-size: small;
+  margin-right: 10vh;
+  text-align: right;
+}
+  
+    .title {
+      font-family: SourceCodePro;
+      color: rgb(255, 255, 255);
+    }
+    .Heading {
+      font-family: SourceCodePro;
+      color: rgb(0, 0, 0);
+      font-size: 6vw;
+      line-height: 5vw;
+      position: center;
+    }
+    .imagezoom:hover {
+            scale:1.1;
+            transition: 0.2s ease;
+        } 
+    .button {
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: transparent;
+            border-color: transparent;
+        }
+
+    .center-cd-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            font-family: SourceCodePro;
+            color: rgb(0, 0, 0);
+            font-size: small;
+          }
+
+.datacd {
+  width: 100px;
+  height: auto;
+  background-color: transparent;
+}
+.subheading {
+  font-family: SourceCodePro;
+  color: rgb(0, 0, 0);
+  font-family: SourceCodePro;
+  color: rgb(0, 0, 0);
+  font-size: small;
+  margin-top: 0.5vw;
+  letter-spacing: 0.1em;
+  font-weight: normal;
+}
+        
+    @font-face {
+            font-family: SourceCodePro;
+            src: url(fonts/SourceCodePro-VariableFont_wght.ttf); format:'truetype';
+        }
+        @font-face {
+            font-family: RubikMonoOne;
+            src: url(fonts/RubikMonoOne-Regular.ttf); format:'truetype';
+        }
+  </style>
+</head>
+<body>
+
+  <div class="flex">
+    <div class="divone">
+        <div class="Heading">CLEO<br>OBERIN</div>
+    </div>
+    
+    <div class="divone">
+  <div class="Heading">CLEO<br>OBERIN</div>
+  <div class="subheading"><br>[CLICK + DRAG]</div>
+</div>
+
+    <div class="divtwo">
+      <div>INSTAGRAM: OCLE_CREATIVE <br><br>EMAIL: CLEO.OBERIN@HOTMAIL.COM 
+    </div>
+  </div>
+    
+  <div class="center-cd-container">
+    <a href="datapage/index.html">
+      <button type="button" class="button">
+        <img class="datacd" src="assets/cd.gif" alt="cd">
+      </button>
+    </a>
+    <br>[WORK + OTHER INFO]<br>
+  </div>
+  </div>
+      
+</body>
+</html>

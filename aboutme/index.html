@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ABOUT ME</title>
+
+<link rel="icon" href="https://www.realsimple.com/thmb/LLUQao-bX-muRqmh6o6qIiVZfTg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/clover-lawn-GettyImages-1145731440-836fe23b8e18433e93c87b7b300c0f1f.jpg" type="image/png" />
+
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    font-family: SourceCodePro, monospace;
+    color: black;
+    overflow-x: hidden;
+    font-weight: normal;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    z-index: 1000;
+  }
+
+  .about-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    margin: 80px auto;
+    padding: 0 30px;
+    gap: 4vw;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .left-text, .right-text {
+    width: 30%;
+    max-width: 350px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: normal;
+  }
+
+  .photo-column {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .profile-photo {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border: 1px solid black;
+  }
+
+  .gif-decoration {
+    width: 150px;
+    height: auto;
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    pointer-events: none;
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-btn {
+    background: transparent;
+    border: 1px solid black;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-family: SourceCodePro, monospace;
+    font-size: 0.85rem;
+  }
+
+  .about-title {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    width: fit-content;
+    font-weight: normal;
+  }
+
+  @media (max-width: 900px) {
+    .about-layout {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .left-text, .right-text {
+      width: 90%;
+      text-align: center;
+      max-width: none;
+      font-size: 0.9rem;
+    }
+
+    .profile-photo {
+      width: 70vw;
+      height: auto;
+    }
+
+    .gif-decoration {
+      width: 100px;
+      top: -30px;
+      right: -30px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="about-layout">
+
+  <div class="left-text">
+    <div class="about-title">[ABOUT ME]</div>
+    Hi! My name is Cleo and I am currently a student at the University of Melbourne, majoring in Graphic Design. I am passionate about all things design, but I have a particular interest in branding, creative coding, and publication design.
+  </div>
+
+  <div class="photo-column">
+    <img src="cleo.jpg" alt="Profile Photo" class="profile-photo">
+    <img src="https://i.pinimg.com/originals/f1/7c/67/f17c67230077d17abd7089ce499a0cef.gif" class="gif-decoration">
+    <div class="nav-buttons">
+      <a href="/index.html"><button class="nav-btn">[HOME]</button></a>
+      <a href="/datapage/index.html"><button class="nav-btn">[WORKS]</button></a>
+    </div>
+  </div>
+
+  <div class="right-text">
+    <div class="about-title">. . . </div>
+    I relocated from regional Victoria in 2023 to pursue my education, and furthermore, my professional career in the design scenescape. 
+    I have enjoyed so much of my design journey thus far, and I am excited to utilise my skills gained as a student to transition into a 
+    dynamic and creative environment. I hope to continue to develop my professional skillset and meaningfully contribute to a creative team 
+    in a positive and enthusiastic way.
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
+

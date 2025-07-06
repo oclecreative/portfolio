@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FOLIO HIGHLIGHT</title>
+
+<script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.min.js"></script>
+
+        <link rel="icon" href="https://www.realsimple.com/thmb/LLUQao-bX-muRqmh6o6qIiVZfTg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/clover-lawn-GettyImages-1145731440-836fe23b8e18433e93c87b7b300c0f1f.jpg" type="image/png" />
+
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    font-family: SourceCodePro, monospace;
+    color: black;
+    overflow-x: hidden;
+  }
+
+  #sketch-holder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  #sketch-holder canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .folio-layout {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1400px;
+    margin: 30px auto 50px auto;
+    padding: 0 30px;
+    gap: 5vw;
+  }
+
+  .fixed-left {
+    width: 30%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .sticky-text {
+    position: sticky;
+    top: 50px;
+    font-size: 10pt;
+    line-height: 1.5;
+    font-weight: normal;    
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .nav-btn {
+    background: transparent;
+    border: 1px solid black;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: SourceCodePro, monospace;
+  }
+
+  .scrolling-right {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .highlight-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5vw;
+    margin: 50px 0;
+    max-width: 800px;
+    width: 100%;
+    justify-content: flex-start;
+    border-bottom: 1px solid black;
+    padding-bottom: 80px;
+  }
+
+  .cover-image {
+    width: 400px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .cover-image:hover {
+    transform: scale(1.05);
+  }
+
+  .folio-info {
+    max-width: 400px;
+    text-align: left;
+  }
+
+  .folio-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .folio-description {
+    font-size: 0.9rem;
+  }
+
+  .folio-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    overflow-y: scroll;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    z-index: 999;
+  }
+
+  .folio-page {
+    width: 60%;
+    max-width: 800px;
+    margin: 20px 0;
+  }
+
+  .close-btn {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    background: transparent;
+    border: 1px solid black;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: SourceCodePro, monospace;
+  }
+
+  @media (max-width: 800px) {
+    .folio-layout {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .fixed-left, .scrolling-right {
+      width: 100%;
+    }
+
+    .highlight-flex {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cover-image {
+      width: 90%;
+    }
+  }
+  body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  z-index: 1000;
+}
+</style>
+</head>
+
+<body>
+
+<div id="sketch-holder"></div>
+
+<div class="folio-layout">
+  
+  <div class="fixed-left">
+    <div class="nav-buttons">
+      <a href="/index.html"><button class="nav-btn">[HOME]</button></a>
+      <a href="/datapage/index.html"><button class="nav-btn">[WORKS]</button></a>
+    </div>
+    
+    <div class="sticky-text">
+      <p>[UNIVERSITY WORK + FOLIOS]</p>
+      <p>The following collection of work was completed at the University of Melbourne, in a combination of Graphic Design studios;<br>
+        <br>[INTERACTIVE MEDIA: 2025]
+        <br>[BRANDING: 2025]
+        <br>[COLOUR STUDIO: 2024]
+        <br>[INFOGRAPHICS: 2025]
+          <br>
+      <br>The experimental nature of these studios was by far the most impactful and influential skill I developed during my time at university. <br>
+      <br> Click the images to view the whole body of work. </p>
+      <img src="https://static.wixstatic.com/media/5922a2_e3fa3a2bc2624085ba47f4c296fbec84~mv2.gif" alt="University Folios" />
+    </div>
+  </div>
+
+  <div class="scrolling-right">
+
+<!-- FOLIO 1 -->
+<div class="highlight-flex">
+  <img src="communitasfolio/cover.png" class="cover-image" alt="Communitas" id="openFolio1">
+  <div class="folio-info">
+    <div class="folio-title">[COMMUNITAS FESTIVAL: FLEXIBLE BRANDING STUDIO]</div>
+    <div class="folio-description">
+      Short description of the folio or project highlight. You can customise this area with project context or details.
+    </div>
+  </div>
+</div>
+
+<div class="folio-viewer" id="folioViewer1">
+  <button class="close-btn" id="closeFolio1">[CLOSE]</button>
+<img src="communitasfolio/page.png" class="folio-page" alt="Page 1">
+<img src="communitasfolio/page2.png" class="folio-page" alt="Page 2">
+<img src="communitasfolio/page3.png" class="folio-page" alt="Page 3">
+<img src="communitasfolio/page4.png" class="folio-page" alt="Page 4">
+<img src="communitasfolio/page5.png" class="folio-page" alt="Page 5">
+<img src="communitasfolio/page6.png" class="folio-page" alt="Page 6">
+<img src="communitasfolio/page7.png" class="folio-page" alt="Page 7">
+<img src="communitasfolio/page8.png" class="folio-page" alt="Page 8">
+<img src="communitasfolio/page9.png" class="folio-page" alt="Page 9">
+<img src="communitasfolio/page10.png" class="folio-page" alt="Page 10">
+<img src="communitasfolio/page11.png" class="folio-page" alt="Page 11">
+<img src="communitasfolio/page12.png" class="folio-page" alt="Page 12">
+<img src="communitasfolio/page13.png" class="folio-page" alt="Page 13">
+<img src="communitasfolio/page14.png" class="folio-page" alt="Page 14">
+<img src="communitasfolio/page15.png" class="folio-page" alt="Page 15">
+<img src="communitasfolio/page16.png" class="folio-page" alt="Page 16">
+<img src="communitasfolio/page17.png" class="folio-page" alt="Page 17">
+<img src="communitasfolio/page18.png" class="folio-page" alt="Page 18">
+<img src="communitasfolio/page19.png" class="folio-page" alt="Page 19">
+<img src="communitasfolio/page20.png" class="folio-page" alt="Page 20">
+<img src="communitasfolio/page21.png" class="folio-page" alt="Page 21">
+<img src="communitasfolio/page22.png" class="folio-page" alt="Page 22">
+<img src="communitasfolio/page23.png" class="folio-page" alt="Page 23">
+<img src="communitasfolio/page24.png" class="folio-page" alt="Page 24">
+<img src="communitasfolio/page25.png" class="folio-page" alt="Page 25">
+<img src="communitasfolio/page26.png" class="folio-page" alt="Page 26">
+<img src="communitasfolio/page27.png" class="folio-page" alt="Page 27">
+<img src="communitasfolio/page28.png" class="folio-page" alt="Page 28">
+<img src="communitasfolio/page29.png" class="folio-page" alt="Page 29">
+<img src="communitasfolio/page30.png" class="folio-page" alt="Page 30">
+<img src="communitasfolio/page31.png" class="folio-page" alt="Page 31">
+<img src="communitasfolio/page32.png" class="folio-page" alt="Page 32">
+<img src="communitasfolio/page33.png" class="folio-page" alt="Page 33">
+<img src="communitasfolio/page34.png" class="folio-page" alt="Page 34">
+<img src="communitasfolio/page35.png" class="folio-page" alt="Page 35">
+<img src="communitasfolio/page36.png" class="folio-page" alt="Page 36">
+<img src="communitasfolio/page37.png" class="folio-page" alt="Page 37">
+<img src="communitasfolio/page38.png" class="folio-page" alt="Page 38">
+<img src="communitasfolio/page39.png" class="folio-page" alt="Page 39">
+<img src="communitasfolio/page40.png" class="folio-page" alt="Page 40">
+<img src="communitasfolio/page41.png" class="folio-page" alt="Page 41">
+<img src="communitasfolio/page42.png" class="folio-page" alt="Page 42">
+<img src="communitasfolio/page43.png" class="folio-page" alt="Page 43">
+<img src="communitasfolio/page44.png" class="folio-page" alt="Page 44">
+<img src="communitasfolio/page45.png" class="folio-page" alt="Page 45">
+<img src="communitasfolio/page46.png" class="folio-page" alt="Page 46">
+</div>
+
+<!-- FOLIO 2 -->
+<div class="highlight-flex">
+  <img src="pinktaxfolio/cover.png" class="cover-image" alt="PinkTax" id="openFolio2">
+  <div class="folio-info">
+    <div class="folio-title">[PINK TAX: INFOGRAPHICS STUDIO]</div>
+    <div class="folio-description">
+      Description of folio 2 project.
+    </div>
+  </div>
+</div>
+
+<div class="folio-viewer" id="folioViewer2">
+  <button class="close-btn" id="closeFolio2">[CLOSE]</button>
+  <img src="pinktaxfolio/page.png" class="folio-page" alt="Page 1">
+<img src="pinktaxfolio/page2.png" class="folio-page" alt="Page 2">
+<img src="pinktaxfolio/page3.png" class="folio-page" alt="Page 3">
+<img src="pinktaxfolio/page4.png" class="folio-page" alt="Page 4">
+<img src="pinktaxfolio/page5.png" class="folio-page" alt="Page 5">
+<img src="pinktaxfolio/page6.png" class="folio-page" alt="Page 6">
+<img src="pinktaxfolio/page7.png" class="folio-page" alt="Page 7">
+<img src="pinktaxfolio/page8.png" class="folio-page" alt="Page 8">
+<img src="pinktaxfolio/page9.png" class="folio-page" alt="Page 9">
+<img src="pinktaxfolio/page10.png" class="folio-page" alt="Page 10">
+<img src="pinktaxfolio/page11.png" class="folio-page" alt="Page 11">
+<img src="pinktaxfolio/page12.png" class="folio-page" alt="Page 12">
+<img src="pinktaxfolio/page13.png" class="folio-page" alt="Page 13">
+<img src="pinktaxfolio/page14.png" class="folio-page" alt="Page 14">
+<img src="pinktaxfolio/page15.png" class="folio-page" alt="Page 15">
+<img src="pinktaxfolio/page16.png" class="folio-page" alt="Page 16">
+<img src="pinktaxfolio/page17.png" class="folio-page" alt="Page 17">
+<img src="pinktaxfolio/page18.png" class="folio-page" alt="Page 18">
+<img src="pinktaxfolio/page19.png" class="folio-page" alt="Page 19">
+<img src="pinktaxfolio/page20.png" class="folio-page" alt="Page 20">
+<img src="pinktaxfolio/page21.png" class="folio-page" alt="Page 21">
+<img src="pinktaxfolio/page22.png" class="folio-page" alt="Page 22">
+<img src="pinktaxfolio/page23.png" class="folio-page" alt="Page 23">
+<img src="pinktaxfolio/page24.png" class="folio-page" alt="Page 24">
+<img src="pinktaxfolio/page25.png" class="folio-page" alt="Page 25">
+<img src="pinktaxfolio/page26.png" class="folio-page" alt="Page 26">
+<img src="pinktaxfolio/page27.png" class="folio-page" alt="Page 27">
+<img src="pinktaxfolio/page28.png" class="folio-page" alt="Page 28">
+<img src="pinktaxfolio/page29.png" class="folio-page" alt="Page 29">
+<img src="pinktaxfolio/page30.png" class="folio-page" alt="Page 30">
+<img src="pinktaxfolio/page31.png" class="folio-page" alt="Page 31">
+<img src="pinktaxfolio/page32.png" class="folio-page" alt="Page 32">
+<img src="pinktaxfolio/page33.png" class="folio-page" alt="Page 33">
+<img src="pinktaxfolio/page34.png" class="folio-page" alt="Page 34">
+<img src="pinktaxfolio/page35.png" class="folio-page" alt="Page 35">
+<img src="pinktaxfolio/page36.png" class="folio-page" alt="Page 36">
+<img src="pinktaxfolio/page37.png" class="folio-page" alt="Page 37">
+
+
+</div>
+
+<!-- FOLIO 3 -->
+<div class="highlight-flex">
+  <img src="empatheticdjfolio/cover.png" class="cover-image" alt="Folio 3" id="openFolio3">
+  <div class="folio-info">
+    <div class="folio-title">[MY EMPATHETIC DJ: CREATIVE CODING STUDIO]</div>
+    <div class="folio-description">
+      Description of folio 3 project.
+    </div>
+  </div>
+</div>
+
+<div class="folio-viewer" id="folioViewer3">
+  <button class="close-btn" id="closeFolio3">[CLOSE]</button>
+  <img src="empatheticdjfolio/page.png" class="folio-page" alt="Page 1">
+    <img src="empatheticdjfolio/page2.png" class="folio-page" alt="Page 2">
+    <img src="empatheticdjfolio/page3.png" class="folio-page" alt="Page 3">
+    <img src="empatheticdjfolio/page4.png" class="folio-page" alt="Page 4">
+    <img src="empatheticdjfolio/page5.png" class="folio-page" alt="Page 5">
+    <img src="empatheticdjfolio/page6.png" class="folio-page" alt="Page 6">
+    <img src="empatheticdjfolio/page7.png" class="folio-page" alt="Page 7">
+    <img src="empatheticdjfolio/page8.png" class="folio-page" alt="Page 8">
+    <img src="empatheticdjfolio/page9.png" class="folio-page" alt="Page 9">
+    <img src="empatheticdjfolio/page10.png" class="folio-page" alt="Page 10">
+    <img src="empatheticdjfolio/page11.png" class="folio-page" alt="Page 11">
+    <img src="empatheticdjfolio/page12.png" class="folio-page" alt="Page 12">
+    <img src="empatheticdjfolio/page13.png" class="folio-page" alt="Page 13">
+    <img src="empatheticdjfolio/page14.png" class="folio-page" alt="Page 14">
+    <img src="empatheticdjfolio/page15.png" class="folio-page" alt="Page 15">
+    <img src="empatheticdjfolio/page16.png" class="folio-page" alt="Page 16">
+    <img src="empatheticdjfolio/page17.png" class="folio-page" alt="Page 17">
+    <img src="empatheticdjfolio/page18.png" class="folio-page" alt="Page 18">
+    <img src="empatheticdjfolio/page19.png" class="folio-page" alt="Page 19">
+    <img src="empatheticdjfolio/page20.png" class="folio-page" alt="Page 20">
+    <img src="empatheticdjfolio/page21.png" class="folio-page" alt="Page 21">
+    <img src="empatheticdjfolio/page22.png" class="folio-page" alt="Page 22">
+    <img src="empatheticdjfolio/page23.png" class="folio-page" alt="Page 23">
+    <img src="empatheticdjfolio/page24.png" class="folio-page" alt="Page 24">
+</div>
+
+<!-- FOLIO 4 -->
+<div class="highlight-flex">
+  <img src="pictogramfolio/cover.png" class="cover-image" alt="Folio 4" id="openFolio4">
+  <div class="folio-info">
+    <div class="folio-title">[PICTOGRAM SET: INFOGRAPHICS STUDIO]</div>
+    <div class="folio-description">
+      Description of folio 4 project.
+    </div>
+  </div>
+</div>
+
+<div class="folio-viewer" id="folioViewer4">
+  <button class="close-btn" id="closeFolio4">[CLOSE]</button>
+  <img src="pictogramfolio/page.png" class="folio-page" alt="Page 1">
+<img src="pictogramfolio/page2.png" class="folio-page" alt="Page 2">
+<img src="pictogramfolio/page3.png" class="folio-page" alt="Page 3">
+<img src="pictogramfolio/page4.png" class="folio-page" alt="Page 4">
+<img src="pictogramfolio/page5.png" class="folio-page" alt="Page 5">
+<img src="pictogramfolio/page6.png" class="folio-page" alt="Page 6">
+<img src="pictogramfolio/page7.png" class="folio-page" alt="Page 7">
+<img src="pictogramfolio/page8.png" class="folio-page" alt="Page 8">
+<img src="pictogramfolio/page9.png" class="folio-page" alt="Page 9">
+<img src="pictogramfolio/page10.png" class="folio-page" alt="Page 10">
+<img src="pictogramfolio/page11.png" class="folio-page" alt="Page 11">
+<img src="pictogramfolio/page12.png" class="folio-page" alt="Page 12">
+<img src="pictogramfolio/page13.png" class="folio-page" alt="Page 13">
+<img src="pictogramfolio/page14.png" class="folio-page" alt="Page 14">
+<img src="pictogramfolio/page15.png" class="folio-page" alt="Page 15">
+<img src="pictogramfolio/page16.png" class="folio-page" alt="Page 16">
+<img src="pictogramfolio/page17.png" class="folio-page" alt="Page 17">
+<img src="pictogramfolio/page18.png" class="folio-page" alt="Page 18">
+<img src="pictogramfolio/page19.png" class="folio-page" alt="Page 19">
+<img src="pictogramfolio/page20.png" class="folio-page" alt="Page 20">
+<img src="pictogramfolio/page21.png" class="folio-page" alt="Page 21">
+
+</div>
+
+<!-- FOLIO 5 -->
+<div class="highlight-flex">
+  <img src="littleblackfolio/cover.png" class="cover-image" alt="Folio 5" id="openFolio5">
+  <div class="folio-info">
+    <div class="folio-title">[LITTLE BLACK REBRAND: BRANDING STUDIO]</div>
+    <div class="folio-description">
+      Description of folio 5 project.
+    </div>
+  </div>
+</div>
+
+<div class="folio-viewer" id="folioViewer5">
+  <button class="close-btn" id="closeFolio5">[CLOSE]</button>
+<img src="littleblackfolio/page.png" class="folio-page" alt="Page 1">
+<img src="littleblackfolio/page2.png" class="folio-page" alt="Page 2">
+<img src="littleblackfolio/page3.png" class="folio-page" alt="Page 3">
+<img src="littleblackfolio/page4.png" class="folio-page" alt="Page 4">
+<img src="littleblackfolio/page5.png" class="folio-page" alt="Page 5">
+<img src="littleblackfolio/page6.png" class="folio-page" alt="Page 6">
+<img src="littleblackfolio/page7.png" class="folio-page" alt="Page 7">
+<img src="littleblackfolio/page8.png" class="folio-page" alt="Page 8">
+<img src="littleblackfolio/page9.png" class="folio-page" alt="Page 9">
+<img src="littleblackfolio/page10.png" class="folio-page" alt="Page 10">
+<img src="littleblackfolio/page11.png" class="folio-page" alt="Page 11">
+<img src="littleblackfolio/page12.png" class="folio-page" alt="Page 12">
+<img src="littleblackfolio/page13.png" class="folio-page" alt="Page 13">
+<img src="littleblackfolio/page14.png" class="folio-page" alt="Page 14">
+<img src="littleblackfolio/page15.png" class="folio-page" alt="Page 15">
+<img src="littleblackfolio/page16.png" class="folio-page" alt="Page 16">
+<img src="littleblackfolio/page17.png" class="folio-page" alt="Page 17">
+<img src="littleblackfolio/page18.png" class="folio-page" alt="Page 18">
+<img src="littleblackfolio/page19.png" class="folio-page" alt="Page 19">
+<img src="littleblackfolio/page20.png" class="folio-page" alt="Page 20">
+<img src="littleblackfolio/page21.png" class="folio-page" alt="Page 21">
+<img src="littleblackfolio/page22.png" class="folio-page" alt="Page 22">
+<img src="littleblackfolio/page23.png" class="folio-page" alt="Page 23">
+<img src="littleblackfolio/page24.png" class="folio-page" alt="Page 24">
+<img src="littleblackfolio/page25.png" class="folio-page" alt="Page 25">
+<img src="littleblackfolio/page26.png" class="folio-page" alt="Page 26">
+<img src="littleblackfolio/page27.png" class="folio-page" alt="Page 27">
+
+</div>
+
+<!-- FOLIO 6 -->
+<div class="highlight-flex">
+  <img src="colourfolio/cover.png" class="cover-image" alt="Folio 6" id="openFolio6">
+  <div class="folio-info">
+    <div class="folio-title">[EXPERIMENTS IN COLOUR: COLOUR STUDIO]</div>
+    <div class="folio-description">
+      Description of folio 6 project.
+    </div>
+  </div>
+</div>
+
+<div class="folio-viewer" id="folioViewer6">
+  <button class="close-btn" id="closeFolio6">[CLOSE]</button>
+<img src="colourfolio/page.png" class="folio-page" alt="Page 1">
+<img src="colourfolio/page2.png" class="folio-page" alt="Page 2">
+<img src="colourfolio/page3.png" class="folio-page" alt="Page 3">
+<img src="colourfolio/page4.png" class="folio-page" alt="Page 4">
+<img src="colourfolio/page5.png" class="folio-page" alt="Page 5">
+<img src="colourfolio/page6.png" class="folio-page" alt="Page 6">
+<img src="colourfolio/page7.png" class="folio-page" alt="Page 7">
+<img src="colourfolio/page8.png" class="folio-page" alt="Page 8">
+<img src="colourfolio/page9.png" class="folio-page" alt="Page 9">
+<img src="colourfolio/page10.png" class="folio-page" alt="Page 10">
+<img src="colourfolio/page11.png" class="folio-page" alt="Page 11">
+<img src="colourfolio/page12.png" class="folio-page" alt="Page 12">
+<img src="colourfolio/page13.png" class="folio-page" alt="Page 13">
+<img src="colourfolio/page14.png" class="folio-page" alt="Page 14">
+<img src="colourfolio/page15.png" class="folio-page" alt="Page 15">
+<img src="colourfolio/page16.png" class="folio-page" alt="Page 16">
+<img src="colourfolio/page17.png" class="folio-page" alt="Page 17">
+<img src="colourfolio/page18.png" class="folio-page" alt="Page 18">
+<img src="colourfolio/page20.png" class="folio-page" alt="Page 20">
+<img src="colourfolio/page21.png" class="folio-page" alt="Page 21">
+<img src="colourfolio/page22.png" class="folio-page" alt="Page 22">
+<img src="colourfolio/page23.png" class="folio-page" alt="Page 23">
+<img src="colourfolio/page24.png" class="folio-page" alt="Page 24">
+<img src="colourfolio/page25.png" class="folio-page" alt="Page 25">
+<img src="colourfolio/page26.png" class="folio-page" alt="Page 26">
+<img src="colourfolio/page27.png" class="folio-page" alt="Page 27">
+<img src="colourfolio/page28.png" class="folio-page" alt="Page 28">
+<img src="colourfolio/page29.png" class="folio-page" alt="Page 29">
+<img src="colourfolio/page30.png" class="folio-page" alt="Page 30">
+<img src="colourfolio/page31.png" class="folio-page" alt="Page 31">
+<img src="colourfolio/page32.png" class="folio-page" alt="Page 32">
+
+</div>
+
+<script>
+// Reusable function to handle folio open/close
+function setupFolio(openId, viewerId, closeId) {
+  document.getElementById(openId).addEventListener('click', () => {
+    document.getElementById(viewerId).style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+  document.getElementById(closeId).addEventListener('click', () => {
+    document.getElementById(viewerId).style.display = 'none';
+    document.body.style.overflow = 'auto';
+  });
+}
+
+// Setup each folio
+setupFolio('openFolio1', 'folioViewer1', 'closeFolio1');
+setupFolio('openFolio2', 'folioViewer2', 'closeFolio2');
+setupFolio('openFolio3', 'folioViewer3', 'closeFolio3');
+setupFolio('openFolio4', 'folioViewer4', 'closeFolio4');
+setupFolio('openFolio5', 'folioViewer5', 'closeFolio5');
+setupFolio('openFolio6', 'folioViewer6', 'closeFolio6');
+</script>
+
+</body>
+</html>
